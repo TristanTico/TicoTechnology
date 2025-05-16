@@ -1,6 +1,7 @@
 import { create } from "zustand";
-import { getAllUsersRequest } from "@/api/user.api";
+import { getAllUsersRequest, createUser } from "@/api/user.api";
 import { UserState } from "@/types/types";
+import { showToast } from "@/lib/showToast";
 
 export const useUserStore = create<UserState>((set) => ({
   users: [],
@@ -31,6 +32,20 @@ export const useUserStore = create<UserState>((set) => ({
         error: error.response?.data?.message || "Error al obtener usuarios",
         isLoading: false,
       });
+    }
+  },
+  createUser: async (user) => {
+    try {
+      const res = await createUser(user);
+      showToast.success(res.data.message);
+      const { fetchUsers, page, limit } = useUserStore.getState();
+      await fetchUsers({ page, limit });
+      return true;
+    } catch (error : any) {
+      showToast.error(error?.response?.data?.message || "Error al registrar usuario");
+      console.log(error);
+      
+      return false;
     }
   },
   setPage: (page) => set({ page }),

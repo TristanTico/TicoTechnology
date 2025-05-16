@@ -8,3 +8,10 @@ export const getAllProductsRequest = async (query: QueryPagination) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
+
+export const createProduct = async (product: FormData) => {
+  const token = localStorage.getItem("accessToken");
+  return await axiosInstance.post("/productos/crear-producto", product, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};

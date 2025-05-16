@@ -22,15 +22,15 @@ export interface User {
 
 export interface SubCategoriaCreate {
   nombreSubcategoria: string;
-  categorias_id: number
+  categorias_id: number;
 }
 
 export interface SubCategoriaTable {
- nombreSubcategoria: string;
- categorias: CategoriaTable
+  nombreSubcategoria: string;
+  categorias: CategoriaTable;
 }
 export interface CategoriaTable {
-  nombreCategoria: string
+  nombreCategoria: string;
 }
 
 export interface Pro {
@@ -49,12 +49,12 @@ export interface Categoria {
 }
 
 export interface SubCategoria {
-  subCategorias_id : number;
+  subCategorias_id: number;
   nombreSubcategoria: string;
   categorias_id: number;
 }
 
-export interface Orden{
+export interface Orden {
   ordenes_id: number;
   fechaOrden: string;
   totalOrden: number;
@@ -68,6 +68,16 @@ export interface RegisterUser {
   correoUsuario: string;
   telefono: string | number;
   direccion: string;
+  clave: string;
+}
+
+export interface CreateUser {
+  cedulaUsuario: string;
+  nombreUsuario: string;
+  correoUsuario: string;
+  telefono: string | number;
+  direccion: string;
+  rol: string;
   clave: string;
 }
 
@@ -99,6 +109,7 @@ export interface UserState {
   limit: number;
   totalPages: number;
   fetchUsers: (query: QueryPagination) => Promise<void>;
+  createUser: (user: CreateUser) => Promise<boolean>;
   setPage: (page: number) => void;
   setLimit: (limit: number) => void;
 }
