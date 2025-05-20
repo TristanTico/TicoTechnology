@@ -1,6 +1,7 @@
 import { create } from "zustand";
-import { getAllOrdersRequest } from "@/api/order.api";
+import { getAllOrdersRequest, createOrder } from "@/api/order.api";
 import { OrderState } from "@/types/types";
+import { showToast } from "@/lib/showToast";
 
 export const useOrderStore = create<OrderState>((set) => ({
   orders: [],
@@ -30,6 +31,20 @@ export const useOrderStore = create<OrderState>((set) => ({
         error: error.response?.data?.message || "Error al obtener ordenes",
         isLoading: false,
       });
+    }
+  },
+  createOrder: async (order) => {
+    try {
+      const res = await createOrder(order);
+      showToast.success(res.data.message);
+      return true;
+    } catch (error: any) {
+      console.log(error);
+      set({
+        error: error.response?.data?.message || "Error al crear la orden",
+        isLoading: false,
+      });
+      return false;
     }
   },
   setPage: (page: number) => set({ page }),

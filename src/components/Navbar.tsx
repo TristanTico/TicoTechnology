@@ -8,6 +8,7 @@ import { MenuDemo } from "./MenuDemo";
 import { AuthModal } from "./Auth/AuthModal";
 import { useAuthStore } from "@/store/authStore";
 import { MenuUserAuth } from "./MenuUserAuth";
+import { useCartStore } from "@/store/cartStore";
 
 export const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,6 +18,7 @@ export const Navbar = () => {
 
   const isAuthenticated  = useAuthStore((state) => state);
   const userLogin = useAuthStore((state) => state.userLogin);
+  const cartItems = useCartStore((state) => state.items);
 
   return (
     <>
@@ -40,7 +42,7 @@ export const Navbar = () => {
                   <ShoppingCart strokeWidth={1} className="cursor-pointer" />
 
                   <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full h-5 w-5 flex items-center justify-center text-xs">
-                    1
+                    {cartItems.length}
                   </span>
                 </button>
               </TooltipComponent>

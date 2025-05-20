@@ -1,8 +1,6 @@
 import axiosInstance from "./axios";
 import { CreateUser, QueryPagination, RegisterUser } from "@/types/types";
 
-
-
 export const registerRequest = async (registerUser: RegisterUser) => {
   return await axiosInstance.post("/usuarios/crear-usuario", registerUser);
 };

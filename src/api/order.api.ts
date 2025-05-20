@@ -1,5 +1,5 @@
 import axiosInstance from "./axios";
-import { QueryPagination } from "@/types/types";
+import { QueryPagination, OrdenCreate } from "@/types/types";
 
 export const getAllOrdersRequest = async (query: QueryPagination) => {
   const token = localStorage.getItem("accessToken");
@@ -8,3 +8,12 @@ export const getAllOrdersRequest = async (query: QueryPagination) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
+
+export const createOrder = async (order: OrdenCreate) => {
+  const token = localStorage.getItem("accessToken");
+  return await axiosInstance.post("/ordenes/create-orden", order, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
+

@@ -1,5 +1,5 @@
 import { ChevronRight } from "lucide-react";
-import { RevealOnScroll } from "./RevealOnScroll";
+import { RevealOnScroll } from "./Loading-skeleton/RevealOnScroll";
 import { ProductCard } from "./ProductCard";
 import { Link } from "react-router-dom";
 
@@ -8,8 +8,11 @@ interface ProductCardProps {
   products: any;
   onAddToCart: (product: any) => void;
 }
-export const CategoriesHome: React.FC<ProductCardProps> = ({ title, products, onAddToCart }) => {
-  
+export const CategoriesHome: React.FC<ProductCardProps> = ({
+  title,
+  products,
+  onAddToCart,
+}) => {
   return (
     <RevealOnScroll>
       <div className="mb-12">
@@ -26,7 +29,7 @@ export const CategoriesHome: React.FC<ProductCardProps> = ({ title, products, on
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {products.slice(0, 5).map((product: any) => (
             <ProductCard
-              key={product.id}
+              key={product.productos_id}
               product={product}
               onAddToCart={onAddToCart}
             />

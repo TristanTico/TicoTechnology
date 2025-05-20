@@ -53,12 +53,8 @@ export const FormProducts: React.FC<FormCategoryProps> = ({ onSuccess }) => {
     setCustomAttributes(updatedAttributes);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(onSuccess);
-  };
   return (
-    <form onClick={(e) => handleSubmit(e as any)} className="space-y-6">
+    <form className="space-y-6">
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">
@@ -111,6 +107,7 @@ export const FormProducts: React.FC<FormCategoryProps> = ({ onSuccess }) => {
           <input
             type="checkbox"
             name="destacado"
+            onChange={(e) => console.log(e.target.checked)}
             className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
           />
           <label className="ml-2 block text-sm text-gray-700">

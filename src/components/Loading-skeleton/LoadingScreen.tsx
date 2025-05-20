@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import LogoSinFondo from "../assets/img/LogoSinFondo.png"
+import LogoSinFondo from "../../assets/img/LogoSinFondo.png"
 
 interface LoadingScreenProps {
   onComplete: () => void;

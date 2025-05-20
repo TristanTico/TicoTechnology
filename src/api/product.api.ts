@@ -15,3 +15,7 @@ export const createProduct = async (product: FormData) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
+
+export const getProductsFeature = async () => {
+  return await axiosInstance.get("/productos/getProductosDestacados");
+};
